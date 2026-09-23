@@ -1,4 +1,6 @@
-﻿namespace _002_Werkzeugverwaltung
+﻿using System.Linq;
+
+namespace _002_Werkzeugverwaltung
 {
 
 
@@ -9,7 +11,7 @@
 
         private int number;
 
-        private bool inStore;
+        private bool inStore = true; 
 
         // Methoden (Unterprogramme)
         public void SetDescription(string description)
@@ -22,10 +24,21 @@
             this.number = number;
         }
 
-        public void SetInStore(bool inStore)
+        public void SetInStoreFalse()
         {
-            this.inStore = inStore;
+            inStore = false;
         }
+
+        public void SetInStoreTrue()
+        {
+            inStore = true;
+        }
+
+        public int GetNumber()
+        {
+            return number;
+        }
+
 
         public void Print ()
         {
@@ -39,29 +52,23 @@
         static void Main(string[] args)
         {
 
-            Tool s1 = new Tool();
-            s1.SetDescription("Wasserwaage");
-            s1.SetNumber(19828);
-            s1.Print();
+            List <Tool> tools = new List <Tool> ();
+            tools.Add (new Tool());
+            tools.Add(new Tool());
+            tools.Add(new Tool());
 
 
-            Tool s2 = new Tool();
-            s2.SetDescription ("Schraubendreher");
-            s2.SetNumber(88392);
-            s2.Print();
 
+            tools[0].SetDescription("Wasserwaage");
+            tools[0].SetNumber(19828);
             
+            tools[1].SetDescription ("Schraubendreher");
+            tools[1].SetNumber(88392);      
 
-            Tool s3 = new Tool();
-            s3.SetDescription("Schraubendreher");
-            s3.SetNumber(649389);
-            s3.Print();
+            tools[2].SetDescription("Schraubendreher");
+            tools[2].SetNumber(649389);
 
-
-            Console.ReadKey();
-
-            /*
-
+            int i = 3;
 
             bool stayAlive = true;
             do
@@ -76,36 +83,78 @@
                 switch (eingabe)
                 { 
                     case 'l':
-
+                        foreach (Tool tool in tools)
+                        {
+                            tool.Print();
+                        }
                         break;
 
 
                     case 'h':
+                        Console.WriteLine("Name vom Werkzeug eingeben");
+                        string toolDescription = Console.ReadLine();
 
+                        Console.WriteLine("Nummer vom Werkzeug eingeben");
+                        int toolNumber = int.Parse(Console.ReadLine());
+
+                        tools.Add(new Tool());
+
+                        tools[i].SetDescription(toolDescription);
+                        tools[i].SetNumber(toolNumber);
+                        i++;
+                        Console.WriteLine("Werkzeug wurde hinzugefügt");
                         break;
 
 
                     case 'a':
+                        Console.WriteLine("Nummer vom Werkzeug eingeben");
+                        int ausleihenWerkzeug = int.Parse (Console.ReadLine());
+                        
 
+                        foreach (Tool tool in tools)
+                        {
+                            if  (ausleihenWerkzeug == tool.GetNumber())
+                            {
+                                tool.SetInStoreFalse();
+
+
+                                Console.WriteLine("Werkzeug wurde ausgeliehen");
+                            }
+
+                        }
+                                             
                         break;
 
 
                     case 'r':
+                        Console.WriteLine("Nummer vom Werkzeug eingeben");
+                        int retourWerkzeug = int.Parse(Console.ReadLine());
 
+
+                        foreach (Tool tool in tools)
+                        {
+                            if (retourWerkzeug == tool.GetNumber())
+                            {
+                                tool.SetInStoreTrue();
+                                Console.WriteLine("Werkzeug wurde retouniert");
+                            }
+                        }
                         break;
-
 
                     case 'b':
                         stayAlive = false;
                         break;
 
+                    default:
+                        Console.WriteLine("Falsche Eingabe");
+                        break;
                     
 
                 }
             } while (stayAlive);
 
             
-            */
+            
             
         }
     }
