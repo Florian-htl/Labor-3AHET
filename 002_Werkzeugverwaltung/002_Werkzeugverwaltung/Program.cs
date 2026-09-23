@@ -45,6 +45,13 @@ namespace _002_Werkzeugverwaltung
             Console.WriteLine($"{description} {number}, im Lager: {inStore}");
 
         }
+
+        public Tool(string description, int number)  // Konstruktor (heißt immer wie die Klasse)
+        {
+            this.description = description;
+            this.number = number;
+        
+        }
     }
 
     internal class Program
@@ -53,20 +60,13 @@ namespace _002_Werkzeugverwaltung
         {
 
             List <Tool> tools = new List <Tool> ();
-            tools.Add (new Tool());
-            tools.Add(new Tool());
-            tools.Add(new Tool());
+            tools.Add (new Tool("Wasserwaage", 19828));
+            tools.Add(new Tool("Schraubendreher", 88392));
+            tools.Add(new Tool("Schraubendreher", 649389));
 
 
 
-            tools[0].SetDescription("Wasserwaage");
-            tools[0].SetNumber(19828);
             
-            tools[1].SetDescription ("Schraubendreher");
-            tools[1].SetNumber(88392);      
-
-            tools[2].SetDescription("Schraubendreher");
-            tools[2].SetNumber(649389);
 
             int i = 3;
 
@@ -97,7 +97,7 @@ namespace _002_Werkzeugverwaltung
                         Console.WriteLine("Nummer vom Werkzeug eingeben");
                         int toolNumber = int.Parse(Console.ReadLine());
 
-                        tools.Add(new Tool());
+                        tools.Add(new Tool(toolDescription, toolNumber));
 
                         tools[i].SetDescription(toolDescription);
                         tools[i].SetNumber(toolNumber);
