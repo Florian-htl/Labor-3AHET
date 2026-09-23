@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("002_Werkzeugverwaltung")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+27c4c6f8e7785dfaf79275b2300d6640daf8f9a2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e4e68ef0bed32bdec0ff7e2bc929ca2663b6f1a3")]
 [assembly: System.Reflection.AssemblyProductAttribute("002_Werkzeugverwaltung")]
 [assembly: System.Reflection.AssemblyTitleAttribute("002_Werkzeugverwaltung")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
